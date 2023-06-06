@@ -13,13 +13,17 @@ helm repo update
 ```
 helm install monitoring prom-repo/kube-prometheus-stack -n monitoring --create-namespace --values=values.yaml
 ```
+- Uninstall the chart:
+```
+helm uninstall monitoring -n monitoring
+```
 
 
 ## Access
 ```
 kubectl get svc -n monitoring -o wide
 ```
-http://ManagerNodeIpAddress:GrafanaServiceNodePort
+ManagerNodeIpAddress:GrafanaServiceNodePort
 
 
 ## Other options
