@@ -23,7 +23,15 @@ helm uninstall monitoring -n monitoring
 ```
 kubectl get svc -n monitoring -o wide
 ```
-ManagerNodeIpAddress:GrafanaServiceNodePort
+```
+NODE_IP=$(kubectl get nodes -o jsonpath='{.items[0].status.addresses[?(@.type=="InternalIP")].address}')
+```
+$NODE_IP:30001
+
+## Alerts
+```
+sum by (cpu) (rate(node_cpu_seconds_total{mode!="idle"}[1m]))
+```
 
 
 ## Other options
